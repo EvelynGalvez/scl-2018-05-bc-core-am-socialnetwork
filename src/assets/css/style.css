@@ -361,6 +361,28 @@ footer {
   text-align: justify;
 }
 
+.file-input {
+  visibility: hidden;
+  width: 0;
+  position: relative;
+}
+.file-input::before {
+  content: 'Seleccionar';
+  display: inline-block;
+  background-color: #444343;
+  color: white;
+  border-radius: 3px;
+  padding: 8px 10px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  visibility: visible;
+  position: absolute;
+  margin-left: 20px;
+}
+
+
 
 /* cierre css pantalla 3*/
 @media(min-width: 768px) {
