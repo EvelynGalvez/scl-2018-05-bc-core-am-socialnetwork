@@ -197,6 +197,8 @@ nav {
   left: 0;
 }
 
+
+
 .close_button {
   /* configurando boton de cierre del navbar*/
   font-size: xx-large;
@@ -364,6 +366,7 @@ footer {
 @media(min-width: 768px) {
   .menu {
     width: 20vw;
+    padding-bottom: 23%;
     /*El menú va a tomar este ancho con pantallas de 768px hacia arriba*/
   }
 

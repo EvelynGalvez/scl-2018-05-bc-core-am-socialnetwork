@@ -180,15 +180,12 @@ db.collection('users').onSnapshot((querySnapshot) => {
 });
 
 // Borrar documentos (delete)
-function deletePost(id)
-{
+function deletePost(id) {
   let removeMessage = confirm('¿Quiere eliminar la publicación?');
   if (removeMessage === true) {
-    db.collection('users').doc(id).delete().then(function()
-    {
+    db.collection('users').doc(id).delete().then(function() {
       console.log('Document successfully deleted!');
-    }).catch(function(error)
-    {
+    }).catch(function(error) {
       console.error('Error removing document: ', error);
     });
   }
