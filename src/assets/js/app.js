@@ -182,11 +182,11 @@ function userPost() {
    
     })
       .then(function(docRef) {
-        console.log('Document written with ID: ', docRef.id);
+        console.log('Documento con ID: ', docRef.id);
         document.getElementById('messageArea').value = '';
       })
       .catch(function(error) {
-        console.error('Error adding document: ', error);
+        console.error('Error al agregar documento: ', error);
       });
   }
 }
@@ -213,9 +213,9 @@ function deletePost(id) {
   let removeMessage = confirm('¿Quiere eliminar la publicación?');
   if (removeMessage === true) {
     db.collection('users').doc(id).delete().then(function() {
-      console.log('Document successfully deleted!');
+      console.log('Documento eliminado correctamente');
     }).catch(function(error) {
-      console.error('Error removing document: ', error);
+      console.error('Error al eliminar el documento: ', error);
     });
   }
 }
@@ -236,14 +236,14 @@ function edit(id, message) {
         textMessage: message
       })
       .then(function() {
-        console.log('Document successfully updated!');
+        console.log('El documento se editó correctamente');
         btnPost.innerHTML = 'Publicar';
         btnPost.onclick = userPost;
         document.getElementById('messageArea').value = '';
       })
       .catch(function(error) {
-        // The document probably doesn't exist.
-        console.error('Error updating document: ', error);
+        
+        console.error('Error al editar el documento: ', error);
       });
   };
 } 
