@@ -151,21 +151,27 @@
     
       <!--botones para publicar -->
       <div id="botones" class="row">
-        <div class="col-6 btnSubirImg">
-          <button type="button" class="btn btn-primary" id="btnImg">Subir imagen</button>
-        </div>
-        <div class="col-6 btnSubirPublicacion">
-          <button onclick="userPost()" type="button" class="btn btn-primary" id="btnPost">Publicar</button>
-        </div>
+        
+          <div class="col-4">
+            <input id="photoFileSelector" type="file" accept="image/*" class="file-input"/>
+          </div>
+          <div class="col-4">
+            <input id="sendPhoto" type="button" class="btn btn-dark" onclick="sendPhotoToStorage()" value="Subir imagen">
+          </div>
+          <div class="col-4">
+            <button onclick="userPost()" type="button" class="btn btn-primary" id="btnPost">Publicar</button>
+          </div>
+      
       </div>
+      
 
+      <div id="containerImg"></div>
       <div id="messageContainer"></div> <!-- Acá estará contenido el mensaje publicado por usuario -->
 
-      <footer><img id="dogsAndCats" src="assets/img/cats-and-dogs-png-hd--1246.jpg" class="img-fluid" alt="Responsive image"></footer>
+      <!-- <footer><img id="dogsAndCats" src="assets/img/cats-and-dogs-png-hd--1246.jpg" class="img-fluid" alt="Responsive image"></footer> -->
     
     </div>
   <!--Fin pantalla 3 -->
-  
   
   <div id="screenAlimentacion" class="container-fluid">
     <h2>Alimentación</h2>
