@@ -241,7 +241,7 @@ db.collection('users').onSnapshot((querySnapshot) => {
 function deletePost(id)
 {
   let removeMessage = confirm('¿Quiere eliminar la publicación?');
-  if (removeMessage ==true) {
+  if (removeMessage === true) {
     db.collection('users').doc(id).delete().then(function()
     {
       console.log('Document successfully deleted!');
@@ -249,7 +249,7 @@ function deletePost(id)
     {
       console.error('Error removing document: ', error);
     });
-    }
+  }
 }
 
 // Editar documentos (update)
