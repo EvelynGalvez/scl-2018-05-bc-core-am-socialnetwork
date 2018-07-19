@@ -132,6 +132,7 @@ function logout() {
       document.getElementById('screenDirectorio').style.display = 'none';
       document.getElementById('screenAlimentacion').style.display = 'none';
       document.getElementById('screenCuidados').style.display = 'none';
+      document.getElementById('screenAdopciones').style.display = 'none';
     })
     .catch();
 }
@@ -175,6 +176,36 @@ let db = firebase.firestore();
 function userPost() {
   let message = document.getElementById('messageArea').value;
   if (message === '') {
+    alert('La publicación debe contener texto, por favor ingresa un mensaje');
+  } else {
+    const photoFile = photoFileSelector.files[0];
+    const fileName = photoFile.name; // nombre del archivo, sirve para armar la ruta
+    const metadata = { // datos sobre el archivo que estamos subiendo
+      contentType: photoFile.type// tipo de archivo que estamos subiendo
+    };
+    // va a retornar una tarea= task (objeto)
+    const task = firebase.storage().ref('users') // Corresponden a las carpetas que tenemos dentro del storage
+      .child(fileName)
+      .put(photoFile, metadata);
+
+    task.then(snapshot => snapshot.ref.getDownloadURL()) // obtenemos la url de descarga (de la imagen)
+      .then(url => {
+        console.log('URL del archivo > ' + url);
+        db.collection('users').add({
+          img: url,
+          textMessage: message,
+        })
+          .then(function(docRef) {
+            console.log('Document written with ID: ', docRef.id);
+          })
+          .catch(function(error) {
+            console.error('Error adding document: ', error);
+          });
+      });
+  };
+}
+
+  /*if (message === '') {
     alert('Por favor ingrese un mensaje válido');
   } else {
     db.collection('users').add({
@@ -207,7 +238,6 @@ function sendPhotoToStorage() {
       console.log('URL del archivo > ' + url);
       db.collection('users').add({
         img: url,
-        
       })
         .then(function(docRef) {
           console.log('Document written with ID: ', docRef.id);
@@ -216,14 +246,14 @@ function sendPhotoToStorage() {
           console.error('Error adding document: ', error);
         });
     });
-}
+}*/
 
 // Leer documentos (read)
 let container = document.getElementById('messageContainer');
 db.collection('users').onSnapshot((querySnapshot) => {
   container.innerHTML = '';
   querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data().img}`);
+    console.log(`${doc.id} => ${doc.data().textMessage}`);
     container.innerHTML += `
       <div class="col-12" id="divContainer">
       <img src="${doc.data().img}" class="img-fluid" alt="Responsive image">
