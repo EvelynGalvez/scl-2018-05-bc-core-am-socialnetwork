@@ -342,6 +342,18 @@ footer {
   color:  black;
 }
 
+.adoptionCards {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.card-text-adoption {
+  font-size: 20px;
+  color: black;
+  text-align: justify;
+}
+
 
 /* cierre css pantalla 3*/
 @media(min-width: 768px) {
@@ -497,5 +509,14 @@ footer {
 
   #pawIcon {
     margin-left: 68%;
+  }
+
+  .adoptionCards {
+    width: 40%;
+  }
+
+  .adoptionCards {
+    width: 40%;
+    margin-left: 30%;
   }
 }
