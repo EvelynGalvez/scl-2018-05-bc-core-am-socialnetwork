@@ -324,6 +324,36 @@ footer {
   text-align: right;
 }
 
+.list-group {
+  width: 70%;
+  margin-left: 15%;
+}
+
+.food {
+  font-size: 15px;
+  text-align: justify;
+  padding: 5%;
+  color: black;
+}
+
+.foodTitle {
+  margin-top: 7%;
+  font-size: 20px;
+  color:  black;
+}
+
+.adoptionCards {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.card-text-adoption {
+  font-size: 20px;
+  color: black;
+  text-align: justify;
+}
+
 
 /* cierre css pantalla 3*/
 @media(min-width: 768px) {
@@ -479,5 +509,14 @@ footer {
 
   #pawIcon {
     margin-left: 68%;
+  }
+
+  .adoptionCards {
+    width: 40%;
+  }
+
+  .adoptionCards {
+    width: 40%;
+    margin-left: 30%;
   }
 }
