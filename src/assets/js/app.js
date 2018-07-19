@@ -91,6 +91,16 @@ function toShowScreenAdopciones() {
   document.getElementById('screenAdopciones').style.display = 'block';
   closeMenu();
 }
+
+function toShowScreenMuro() {
+  document.getElementById('screen3').style.display = 'block';
+  document.getElementById('screenAlimentacion').style.display = 'none';
+  document.getElementById('screenCuidados').style.display = 'none';
+  document.getElementById('screenDirectorio').style.display = 'none';
+  document.getElementById('screenAdopciones').style.display = 'none';
+  closeMenu();
+}
+
 // Sección registrar
 function register() {
   const emailValue = document.getElementById('email_signUp').value;
