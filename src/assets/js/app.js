@@ -6,8 +6,8 @@ window.onload = () => {
       var displayName = user.displayName;
       var email = user.email;
       console.log('>>>>>>>>>>>>>>>>');
-      console.log(displayName);
-      document.getElementById('userName').innerHTML = displayName;
+      // console.log(displayName);
+      // document.getElementById('userName').innerHTML = displayName;
 
       console.log('>>>>>>>>>>>>>>>');
       console.log(user.emailVerified);
@@ -29,6 +29,35 @@ window.onload = () => {
     }
   });
 };
+
+function toShowScreen3(user) {
+  let providerData = user.providerData;
+  let userGoogle = user.providerData;
+  let nameFacebook = providerData[0].displayName;
+  if (user.emailVerified === true) {
+    console.log(user.email);
+    document.getElementById('userName').innerHTML = user.email;
+    document.getElementById('screen1').style.display = 'none';
+    document.getElementById('screen2').style.display = 'none';
+    document.getElementById('screen3').style.display = 'block';
+    document.getElementById('menuNav').style.visibility = 'visible';
+    closeMenu();
+  } else if (providerData[0].providerId === 'facebook.com') {
+    document.getElementById('userName').innerHTML = user.displayName;
+    document.getElementById('screen1').style.display = 'none';
+    document.getElementById('screen2').style.display = 'none';
+    document.getElementById('screen3').style.display = 'block';
+    document.getElementById('menuNav').style.visibility = 'visible';
+    closeMenu();
+  } else if (userGoogle[0].providerId === 'google.com') {
+    document.getElementById('userName').innerHTML = user.displayName;
+    document.getElementById('screen1').style.display = 'none';
+    document.getElementById('screen2').style.display = 'none';
+    document.getElementById('screen3').style.display = 'block';
+    document.getElementById('menuNav').style.visibility = 'visible';
+    closeMenu();
+  }
+}
 
 // Sección registrar
 function register() {
@@ -71,7 +100,7 @@ function loginFacebook() {
   firebase.auth().signInWithPopup(provider)
     .then(()=> {
       console.log('Login con facebook');
-      return true;
+      // return true;
     })
     .catch((error) => {
       console.log('Error de Firebase > ' + error.code);

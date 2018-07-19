@@ -7,31 +7,6 @@ signUp.addEventListener('click', () => {
   document.getElementById('screen2').style.display = 'block';
 });
 
-function toShowScreen3(user) {
-  let providerData = user.providerData;
-  let userGoogle = user.providerData;
-  let nameFacebook = providerData[0].displayName;
-  if (user.emailVerified) {
-    document.getElementById('screen1').style.display = 'none';
-    document.getElementById('screen2').style.display = 'none';
-    document.getElementById('screen3').style.display = 'block';
-    document.getElementById('menuNav').style.visibility = 'visible';
-    closeMenu();
-    let displayName = email;
-  } else if (providerData[0].providerId === 'facebook.com') {
-    document.getElementById('screen1').style.display = 'none';
-    document.getElementById('screen2').style.display = 'none';
-    document.getElementById('screen3').style.display = 'block';
-    document.getElementById('menuNav').style.visibility = 'visible';
-    closeMenu();
-  } else if (userGoogle[0].providerId === 'google.com') {
-    document.getElementById('screen1').style.display = 'none';
-    document.getElementById('screen2').style.display = 'none';
-    document.getElementById('screen3').style.display = 'block';
-    document.getElementById('menuNav').style.visibility = 'visible';
-    closeMenu();
-  }
-}
 
 function toShowScreenAlimentacion() {
   document.getElementById('screen3').style.display = 'none';
