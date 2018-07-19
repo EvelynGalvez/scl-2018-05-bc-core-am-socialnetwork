@@ -60,6 +60,7 @@ function toShowScreenAlimentacion() {
   document.getElementById('screen3').style.display = 'none';
   document.getElementById('screenCuidados').style.display = 'none';
   document.getElementById('screenDirectorio').style.display = 'none';
+  document.getElementById('screenAdopciones').style.display = 'none';
   document.getElementById('screenAlimentacion').style.display = 'block';
   closeMenu();
 }
@@ -68,6 +69,7 @@ function toShowScreenCuidados() {
   document.getElementById('screen3').style.display = 'none';
   document.getElementById('screenDirectorio').style.display = 'none';
   document.getElementById('screenAlimentacion').style.display = 'none';
+  document.getElementById('screenAdopciones').style.display = 'none';
   document.getElementById('screenCuidados').style.display = 'block';
   closeMenu();
 }
@@ -76,6 +78,7 @@ function toShowScreenDirectorio() {
   document.getElementById('screen3').style.display = 'none';
   document.getElementById('screenAlimentacion').style.display = 'none';
   document.getElementById('screenCuidados').style.display = 'none';
+  document.getElementById('screenAdopciones').style.display = 'none';
   document.getElementById('screenDirectorio').style.display = 'block';
   closeMenu();
 }
