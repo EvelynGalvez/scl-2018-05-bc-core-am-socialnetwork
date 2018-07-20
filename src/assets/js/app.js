@@ -231,7 +231,7 @@ db.collection('users').onSnapshot((querySnapshot) => {
       <i type="button" class="far fa-edit 2x" onclick="edit('${doc.id}','${doc.data().textMessage}')"> </i>
       <i type="button" class="fas fa-trash-alt 2x" onclick="deletePost('${doc.id}')"></i>
       </div>
-      <i class="fas fa-paw" id='pawIcon' onclick ='likeCounter()'></i>
+      <i class="fas fa-paw" id='pawIcon' onclick ='likeCounter()'></i> <span id='counterResult'> <span/>
       `;
   });
 });
@@ -275,3 +275,16 @@ function edit(id, message) {
       });
   };
 } 
+
+function likeCounter() {
+  if(typeof(Storage) !== 'undefined') {
+      if (localStorage.clickcounter) {
+          localStorage.clickcounter = Number(localStorage.clickcounter)+1;
+      } else {
+          localStorage.clickcounter = 1;
+      }
+      document.getElementById('counterResult').innerHTML = localStorage.clickcounter ;
+  } else {
+      document.getElementById('counterResult').innerHTML = 'error';
+  }
+}
