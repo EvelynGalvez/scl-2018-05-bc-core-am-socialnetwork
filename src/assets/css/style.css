@@ -147,7 +147,7 @@ header {
 }
 
 .menu {
-  position: absolute;
+  position: fixed;
   top: 0;
   height: 50%;
   width: 70vw;
@@ -159,6 +159,7 @@ header {
   background-color: #ED6F00;
   height: 10%;
   z-index: 2;
+  position: fixed;
 }
 
 .iconMenu {
@@ -196,8 +197,6 @@ nav {
 .menu_open {
   left: 0;
 }
-
-
 
 .close_button {
   /* configurando boton de cierre del navbar*/
@@ -271,13 +270,6 @@ nav {
   margin-bottom: 0%;
   position: relative;
   bottom: 0%;
-}
-
-footer {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  margin-bottom: 0px;
 }
 
 #btnPost {
@@ -367,19 +359,19 @@ footer {
   position: relative;
 }
 .file-input::before {
-  content: 'Seleccionar';
+  content: 'SUBIR FOTO';
   display: inline-block;
   background-color: #444343;
   color: white;
   border-radius: 3px;
-  padding: 8px 10px;
+  padding: 5px 20px;
   outline: none;
   white-space: nowrap;
   cursor: pointer;
   font-family: 'Oswald', sans-serif;
   visibility: visible;
   position: absolute;
-  margin-left: 20px;
+  margin-left: 45px;
 }
 
 

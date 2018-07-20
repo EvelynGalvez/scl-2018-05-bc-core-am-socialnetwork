@@ -132,6 +132,7 @@ function logout() {
       document.getElementById('screenDirectorio').style.display = 'none';
       document.getElementById('screenAlimentacion').style.display = 'none';
       document.getElementById('screenCuidados').style.display = 'none';
+      document.getElementById('screenAdopciones').style.display = 'none';
     })
     .catch();
 }
@@ -175,6 +176,36 @@ let db = firebase.firestore();
 function userPost() {
   let message = document.getElementById('messageArea').value;
   if (message === '') {
+    alert('La publicación debe contener texto, por favor ingresa un mensaje');
+  } else {
+    const photoFile = photoFileSelector.files[0];
+    const fileName = photoFile.name; // nombre del archivo, sirve para armar la ruta
+    const metadata = { // datos sobre el archivo que estamos subiendo
+      contentType: photoFile.type// tipo de archivo que estamos subiendo
+    };
+    // va a retornar una tarea= task (objeto)
+    const task = firebase.storage().ref('users') // Corresponden a las carpetas que tenemos dentro del storage
+      .child(fileName)
+      .put(photoFile, metadata);
+
+    task.then(snapshot => snapshot.ref.getDownloadURL()) // obtenemos la url de descarga (de la imagen)
+      .then(url => {
+        console.log('URL del archivo > ' + url);
+        db.collection('users').add({
+          img: url,
+          textMessage: message,
+        })
+          .then(function(docRef) {
+            console.log('Document written with ID: ', docRef.id);
+          })
+          .catch(function(error) {
+            console.error('Error adding document: ', error);
+          });
+      });
+  };
+}
+
+  /*if (message === '') {
     alert('Por favor ingrese un mensaje válido');
   } else {
     db.collection('users').add({
@@ -182,11 +213,11 @@ function userPost() {
    
     })
       .then(function(docRef) {
-        console.log('Documento con ID: ', docRef.id);
+        console.log('Document written with ID: ', docRef.id);
         document.getElementById('messageArea').value = '';
       })
       .catch(function(error) {
-        console.error('Error al agregar documento: ', error);
+        console.error('Error adding document: ', error);
       });
   }
 }
@@ -207,7 +238,6 @@ function sendPhotoToStorage() {
       console.log('URL del archivo > ' + url);
       db.collection('users').add({
         img: url,
-        
       })
         .then(function(docRef) {
           console.log('Document written with ID: ', docRef.id);
@@ -216,14 +246,14 @@ function sendPhotoToStorage() {
           console.error('Error adding document: ', error);
         });
     });
-}
+}*/
 
 // Leer documentos (read)
 let container = document.getElementById('messageContainer');
 db.collection('users').onSnapshot((querySnapshot) => {
   container.innerHTML = '';
   querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data().img}`);
+    console.log(`${doc.id} => ${doc.data().textMessage}`);
     container.innerHTML += `
       <div class="col-12" id="divContainer">
       <img src="${doc.data().img}" class="img-fluid" alt="Responsive image">
@@ -241,9 +271,9 @@ function deletePost(id) {
   let removeMessage = confirm('¿Quiere eliminar la publicación?');
   if (removeMessage === true) {
     db.collection('users').doc(id).delete().then(function() {
-      console.log('Documento eliminado correctamente');
+      console.log('Document successfully deleted!');
     }).catch(function(error) {
-      console.error('Error al eliminar el documento: ', error);
+      console.error('Error removing document: ', error);
     });
   }
 }
@@ -264,14 +294,14 @@ function edit(id, message) {
         textMessage: message
       })
       .then(function() {
-        console.log('El documento se editó correctamente');
+        console.log('Document successfully updated!');
         btnPost.innerHTML = 'Publicar';
         btnPost.onclick = userPost;
         document.getElementById('messageArea').value = '';
       })
       .catch(function(error) {
-        
-        console.error('Error al editar el documento: ', error);
+        // The document probably doesn't exist.
+        console.error('Error updating document: ', error);
       });
   };
 } 
