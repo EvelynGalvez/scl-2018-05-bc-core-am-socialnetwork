@@ -264,14 +264,14 @@ function edit(id, message) {
 } 
 
 function likeCounter() {
-  if(typeof(Storage) !== 'undefined') {
-      if (localStorage.clickcounter) {
-          localStorage.clickcounter = Number(localStorage.clickcounter)+1;
-      } else {
-          localStorage.clickcounter = 1;
-      }
-      document.getElementById('counterResult').innerHTML = localStorage.clickcounter ;
+  if (typeof(Storage) !== 'undefined') {
+    if (localStorage.clickcounter) {
+      localStorage.clickcounter = Number(localStorage.clickcounter) + 1;
+    } else {
+      localStorage.clickcounter = 1;
+    }
+    document.getElementById('counterResult').innerHTML = localStorage.clickcounter ;
   } else {
-      document.getElementById('counterResult').innerHTML = 'error';
+    document.getElementById('counterResult').innerHTML = 'error';
   }
 }
