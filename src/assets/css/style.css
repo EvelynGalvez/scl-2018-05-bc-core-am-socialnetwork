@@ -1,7 +1,3 @@
-/*
-font-family: 'Wendy One', sans-serif;
-font-family: 'Pragati Narrow', sans-serif;
-*/
 .container-fluid {
   height: 100%;
   padding: 0px;
@@ -219,7 +215,8 @@ nav {
 #divContainer {
   border: solid grey 1px;
   width: 70%;
-  margin: 5% auto 1% auto;
+  margin-top: 25px;
+  padding-top: 10px;
   display: block;
   height: 50%;
   background-color: white;
@@ -374,6 +371,10 @@ nav {
   margin-left: 45px;
 }
 
+#botones {
+  margin-bottom: 7%;
+}
+
 
 
 /* cierre css pantalla 3*/
@@ -382,6 +383,15 @@ nav {
     width: 20vw;
     padding-bottom: 23%;
     /*El menú va a tomar este ancho con pantallas de 768px hacia arriba*/
+  }
+
+  header {
+    width: 100%;
+    height: auto;
+  }
+
+  #menuColor {
+    width: 100%;
   }
 
   .menu_closed {

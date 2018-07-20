@@ -179,16 +179,15 @@ function userPost() {
     alert('La publicación debe contener texto, por favor ingresa un mensaje');
   } else {
     const photoFile = photoFileSelector.files[0];
-    const fileName = photoFile.name; // nombre del archivo, sirve para armar la ruta
-    const metadata = { // datos sobre el archivo que estamos subiendo
-      contentType: photoFile.type// tipo de archivo que estamos subiendo
+    const fileName = photoFile.name; 
+    const metadata = {
+      contentType: photoFile.type
     };
-    // va a retornar una tarea= task (objeto)
-    const task = firebase.storage().ref('users') // Corresponden a las carpetas que tenemos dentro del storage
+    const task = firebase.storage().ref('users')
       .child(fileName)
       .put(photoFile, metadata);
 
-    task.then(snapshot => snapshot.ref.getDownloadURL()) // obtenemos la url de descarga (de la imagen)
+    task.then(snapshot => snapshot.ref.getDownloadURL())
       .then(url => {
         console.log('URL del archivo > ' + url);
         db.collection('users').add({
@@ -197,6 +196,7 @@ function userPost() {
         })
           .then(function(docRef) {
             console.log('Document written with ID: ', docRef.id);
+            document.getElementById('messageArea').value = '';
           })
           .catch(function(error) {
             console.error('Error adding document: ', error);
@@ -204,49 +204,6 @@ function userPost() {
       });
   };
 }
-
-  /*if (message === '') {
-    alert('Por favor ingrese un mensaje válido');
-  } else {
-    db.collection('users').add({
-      textMessage: message
-   
-    })
-      .then(function(docRef) {
-        console.log('Document written with ID: ', docRef.id);
-        document.getElementById('messageArea').value = '';
-      })
-      .catch(function(error) {
-        console.error('Error adding document: ', error);
-      });
-  }
-}
-
-function sendPhotoToStorage() {
-  const photoFile = photoFileSelector.files[0];
-  const fileName = photoFile.name; // nombre del archivo, sirve para armar la ruta
-  const metadata = { // datos sobre el archivo que estamos subiendo
-    contentType: photoFile.type// tipo de archivo que estamos subiendo
-  };
-  // va a retornar una tarea= task (objeto)
-  const task = firebase.storage().ref('images') // Corresponden a las carpetas que tenemos dentro del storage
-    .child(fileName)
-    .put(photoFile, metadata);
-
-  task.then(snapshot => snapshot.ref.getDownloadURL()) // obtenemos la url de descarga (de la imagen)
-    .then(url => {
-      console.log('URL del archivo > ' + url);
-      db.collection('users').add({
-        img: url,
-      })
-        .then(function(docRef) {
-          console.log('Document written with ID: ', docRef.id);
-        })
-        .catch(function(error) {
-          console.error('Error adding document: ', error);
-        });
-    });
-}*/
 
 // Leer documentos (read)
 let container = document.getElementById('messageContainer');
