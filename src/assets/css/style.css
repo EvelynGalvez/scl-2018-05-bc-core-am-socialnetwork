@@ -153,7 +153,7 @@ header {
 
 #menuColor {
   background-color: #ED6F00;
-  height: 10%;
+  height: 7%;
   z-index: 2;
   position: fixed;
 }
@@ -209,7 +209,13 @@ nav {
 }
 
 .formPost {
-  margin: 5%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  padding-top: 0%;
+}
+
+#usuario {
+  padding-top: 15%;
 }
 
 #divContainer {
@@ -262,11 +268,9 @@ nav {
   text-align: center;
 }
 
-#dogsAndCats {
-  width: 100%;
-  margin-bottom: 0%;
-  position: relative;
-  bottom: 0%;
+#messageArea {
+  margin-top: 0%;
+  padding-top: 0%;
 }
 
 #btnPost {
